@@ -31,65 +31,19 @@ class Stack<T>{
 }
 
 
-const stack = new Stack<number>();
+const stackTest = new Stack<number>();
 
-stack.push(10);
-stack.push(20);
-stack.push(30);
-console.log(stack.peek());
-console.log(stack.pop());
-console.log(stack.pop());
-console.log(stack.pop());
-console.log(stack.isEmpty());
-console.log(stack.size());
+stackTest.push(10);
+stackTest.push(20);
+stackTest.push(30);
+console.log(stackTest.peek());
+console.log(stackTest.pop());
+console.log(stackTest.pop());
+console.log(stackTest.pop());
+console.log(stackTest.isEmpty());
+console.log(stackTest.size());
 
 const secondStack = new Stack<string>();
 
 secondStack.push("Amir")
 console.log(secondStack.peek());
-
-
-/*
-    In this example I will save it only using type number which is a better approach?
-    No because the above is more dynamic in the below case we can only use it for number stacks
-    class Stack{
-
-    private items: number[]; // Stack list
-
-    constructor() {
-        this.items = [];
-    }
-
-    push(item: number): void {
-        this.items.push(item);
-    }
-
-    pop(): number | undefined {
-        return this.items.pop();
-    }
-
-    peek(): number | undefined {
-        return this.items[this.items.length - 1];
-    }
-
-    isEmpty(): boolean{
-        return this.items.length === 0;
-    }
-
-
-    size(): number{
-        return this.items.length;
-    }
-
-}
-
-
-const stack = new Stack();
-
-stack.push(10);
-stack.push(20);
-console.log(stack.peek());
-console.log(stack.pop());
-console.log(stack.isEmpty());
-console.log(stack.size());
- */
