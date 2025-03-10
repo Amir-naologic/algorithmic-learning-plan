@@ -1,30 +1,38 @@
-class Stack<T>{
-    private items: T[]; //Declare the array to store the data
+/**
+ * Below code implements a stack data structure using an array.
+ */
+
+
+class Stack<T> {
+    private readonly items: T[];
 
     constructor() {
-        this.items = []; // Initialize the items to an empty array
+        // -->Initialize: stack
+        this.items = [];
     }
 
-    // Push method for adding one item
-    push(item: T): void {
+    // --> Add: element to the stack
+    public push(item: T): void {
         this.items.push(item);
     }
 
-    // Pop for removing the last pushed item
-    pop(): T | undefined {
+    // --> Remove: last element from the stack
+    public pop(): T | undefined {
         return this.items.pop();
     }
-    //Peek for showing the last added element
-    peek(): T | undefined {
+
+    // -->Get: last element without removing it
+    public peek(): T | undefined {
         return this.items[this.items.length - 1];
     }
-    //Checks if the items are empty
-    isEmpty(): boolean{
+
+    // -->Check: if queue is empty
+    public isEmpty(): boolean {
         return this.items.length === 0;
     }
 
-    //The number of items in the items array
-    size(): number{
+    // -->Get: number of elements in the stack
+    public size(): number {
         return this.items.length;
     }
 
