@@ -12,17 +12,17 @@ class ReverseStack<T> {
     }
 
     // -->Add: Push an element onto the stack
-    push(item: T): void {
+    public push(item: T): void {
         this.elements.push(item);
     }
 
     // -->Remove: Pop an element from the stack
-    pop(): T | undefined {
+    public pop(): T | undefined {
         return this.elements.pop();
     }
 
     // -->Check: If the stack is empty
-    isEmpty(): boolean {
+    public isEmpty(): boolean {
         return this.elements.length === 0;
     }
 }
