@@ -1,9 +1,12 @@
 /**
- *  Below code implements a recursive binary search.
+ *  Implementation of a binary search using recursion.
+ *
+ *  @example:
+ *      binarySearchRecursive([10, 22, 30, 40, 50], 40);
+ *      binarySearchRecursive([1, 2, 3, 4, 5], 6)
  */
 function binarySearchRecursive(arr: number[], target: number, low: number = 0, high: number = arr.length - 1): boolean {
-
-    // -->Best Case: If the low index is more than the high index, the target is not found return false
+    // -->Check: exit condition
     if (low > high) {
         return false;
     }
@@ -25,29 +28,3 @@ function binarySearchRecursive(arr: number[], target: number, low: number = 0, h
 
 console.log(binarySearchRecursive([10, 22, 30, 40, 50], 40));
 console.log(binarySearchRecursive([1, 2, 3, 4, 5], 6));
-
-
-
-// function binarySearchRecursive(arr: number[], target: number, low: number = 0, high: number = arr.length - 1): number {
-//
-//     if(low > high){
-//         return -1;
-//     }
-//
-//     const mid = Math.floor((low + high) / 2);
-//     if(arr[mid] === target) {
-//         return mid;
-//     }
-//
-//     if(arr[mid] > target) {
-//         return binarySearchRecursive(arr, target, low, mid - 1);
-//     }
-//
-//     if(arr[mid] < target) {
-//         return binarySearchRecursive(arr, target, mid + 1, high);
-//     }
-//
-//     return -1;
-// }
-//
-// console.log(binarySearchRecursive([1, 2, 3, 4 ,5], 31));

@@ -1,8 +1,14 @@
 /**
- * Queue implementation using a singly linked list example
+ * Node representing an element in the linked list queue
  */
 class QueueNode<T> {
+    /**
+     * Value of the node
+     */
     public data: T;
+    /**
+     * Reference to the next node in the queue
+     */
     public next: QueueNode<T> | null;
 
     constructor(data: T) {
@@ -11,34 +17,44 @@ class QueueNode<T> {
     }
 }
 
+/**
+ * Queue implementation using a linked list
+ */
 class LinkedListQueue<T> {
+    /**
+     * Points to the front node of the queue
+     */
     public front: QueueNode<T> | null | undefined;
+    /**
+     * Points to the rear (last) node of the queue
+     */
     public rear: QueueNode<T> | undefined;
+    /**
+     * Tracks the current size of the queue
+     */
     public counter: number;
 
     constructor() {
-
-        // -->Initialize: head as undefined (empty queue)
         this.front = undefined;
-
-        // -->Initialize: rear as undefined (empty queue)
         this.rear = undefined;
-
-        // -->Initialize: counter to track size
         this.counter = 0;
     }
 
+    /**
+     * Checks if the queue is empty
+     */
     public isEmpty(): boolean {
         return this.front === undefined && this.rear === undefined;
     }
 
+    /**
+     * Adds an element to the queue
+     */
     public enqueue(new_data: T): void {
-
-        // -->Create: a new node with the given data
+        // -->Create: new node
         const new_node = new QueueNode<T>(new_data);
 
         if (this.rear === undefined) {
-
             // -->Set: front and rear to new node when queue is empty
             this.front = new_node;
             this.rear = new_node;
@@ -55,10 +71,12 @@ class LinkedListQueue<T> {
         this.counter++;
     }
 
+    /**
+     * Remove item from front of queue
+     */
     public dequeue(): T | undefined {
-
         if (this.isEmpty()) {
-            throw new Error("Queue is empty 😢");
+            return undefined;
         }
 
         // -->Get: data of the front element to be dequeued
@@ -68,7 +86,6 @@ class LinkedListQueue<T> {
         this.front = this.front?.next;
         this.counter--;
 
-        // -->Check: if front is undefined (queue is empty)
         if (this.front === undefined) {
             this.rear = undefined;
         }
@@ -76,19 +93,14 @@ class LinkedListQueue<T> {
     }
 
     /**
-     * Get first element without removing it
+     * Get top element
      */
     public peek(): T | undefined {
-
-        if (this.isEmpty()) {
-            throw new Error("Queue is empty 😢");
-        }
-
-        return this.front?.data;
+        return this.isEmpty() ? undefined : this.front?.data;
     }
 
     /**
-     * Get current size of the queue
+     * Gets the current size of the queue
      */
     public size(): number {
         return this.counter;
@@ -103,5 +115,6 @@ q.enqueue(20);
 console.log("peek", q.peek());
 console.log("dequeue: ", q.dequeue());
 console.log("dequeue: ", q.dequeue());
+
 console.log({ size: q.size() });
 console.log({ isEmpty: q.isEmpty() });

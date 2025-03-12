@@ -1,32 +1,47 @@
 /**
- * Stack implementation using an array example
+ * Stack implementation using an array
  */
 class Stack<T> {
+    /**
+     * List for storing the stack items
+     */
     private readonly items: T[];
 
     constructor() {
         this.items = [];
     }
 
+    /**
+     * Adds item to the stack
+     */
     public push(item: T): void {
         this.items.push(item);
     }
 
+    /**
+     * Removes item from stack
+     */
     public pop(): T | undefined {
         return this.items.pop();
     }
 
-    // -->Get: last element without removing it
+    /**
+     * Get top element
+     */
     public peek(): T | undefined {
         return this.items[this.items.length - 1];
     }
 
-    // -->Check: if queue is empty
+    /**
+     * Check if stack is empty
+     */
     public isEmpty(): boolean {
         return this.items.length === 0;
     }
 
-    // -->Get: number of elements in the stack
+    /**
+     *  Returns the number of elements in the stack
+     */
     public size(): number {
         return this.items.length;
     }

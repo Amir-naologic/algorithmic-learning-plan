@@ -1,8 +1,10 @@
 /**
- * Recursive factorial example
+ * Computes the factorial of a number using recursion
+ *
+ * @example:
+ *  factorial(5)
  */
 function factorial(num: number): number {
-
     // -->Check: exit condition
     if (num <= 1) {
         return 1;
@@ -14,13 +16,15 @@ function factorial(num: number): number {
 console.log(factorial(5));
 
 /**
- * Iterative factorial example
+ * Computes the factorial of a number using iteration
+ *
+ * @example:
+ *  iterativeFactorial(5)
  */
 function iterativeFactorial(num: number): number {
+    // -->Initialize: fact to store the factorial result
+    let fact = 1;
 
-    let fact = 1; // -->Initialize: fact to store the factorial result
-
-    // -->Iterate: from 1 to num, multiply fact by each number
     for (let i = 1; i <= num; i++) {
         fact *= i;
     }
@@ -31,10 +35,12 @@ function iterativeFactorial(num: number): number {
 console.log(iterativeFactorial(5));
 
 /**
- * Recursive Fibonacci example
+ * Computes the given Fibonacci number using recursion
+ *
+ * @example:
+ *  fibonacci(5)
  */
 function fibonacci(num: number): number {
-
     // -->Check: exit condition
     if (num <= 1) {
         return num;
@@ -46,9 +52,15 @@ function fibonacci(num: number): number {
 console.log(fibonacci(5));
 
 /**
- * Iterative fibonacci example.
+ * Computes the given Fibonacci number using iteration
+ *
+ * @example:
+ *  iterativeFibonacci(5)
  */
 function iterativeFibonacci(num: number): number {
+    /**
+     * Initialize first two Fibonacci numbers
+     */
     let a = 0;
     let b = 1;
 

@@ -1,13 +1,17 @@
 /**
  * Postfix expression using a stack implementation
+ *
+ * @example:
+ *  evaluatePostfix("2 3 + 4 *")
+ *  evaluatePostfix("5 1 2 + 4 * + 3 -")
  */
-function evaluatePostFix(expression: string): number {
+function evaluatePostfix(expression: string): number {
 
     const stack: number[] = [];
 
     const tokens = expression.split(' ');
 
-    // -->Iterate: Loop through each token in the postfix expression
+    // -->Iterate: through each token in the postfix expression
     for (let token of tokens) {
 
         // -->Check: If the token is a number, push it onto the stack
@@ -56,4 +60,4 @@ function evaluatePostFix(expression: string): number {
     return result;
 }
 
-console.log(evaluatePostFix("2 3 + 4 *"));
+console.log(evaluatePostfix("2 3 + 4 *"));

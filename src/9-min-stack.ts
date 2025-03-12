@@ -1,8 +1,14 @@
 /**
- * Implementation of a Min Stack data structure using two arrays example
+ * Implementation of a Min Stack data structure using two arrays
  */
 class MinStack {
+    /**
+     * Main stack for storing all the elements
+     */
     public stack: number[];
+    /**
+     * Helper stack for tracking the minimum elements
+     */
     public minStack: number[];
 
     constructor() {
@@ -10,6 +16,9 @@ class MinStack {
         this.minStack = [];
     }
 
+    /**
+     * Adds an item to the stack
+     */
     public push(item: number): void {
         const currentMin = this.getMin();
 
@@ -28,7 +37,9 @@ class MinStack {
         if (this.minStack.length === 0) {
             return undefined;
         }
-        return this.minStack[this.minStack.length - 1]; // -->Top: element of minStack is the current minimum
+
+        // -->Top: element of minStack is the current minimum
+        return this.minStack[this.minStack.length - 1];
     }
 }
 

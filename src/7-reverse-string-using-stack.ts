@@ -1,36 +1,45 @@
 /**
  * Reverse a string by using a stack implementation
  */
-// -->Define: A Stack class to hold elements and implement stack operations
 class ReverseStack<T> {
 
+    /**
+     * List for storing the stack items
+     */
     private elements: T[];
 
-    // -->Initialize: The stack with an empty array
     constructor() {
         this.elements = [];
     }
 
+    /**
+     * Adds item to the stack
+     */
     public push(item: T): void {
         this.elements.push(item);
     }
 
+    /**
+     * Removes item from stack
+     */
     public pop(): T | undefined {
         return this.elements.pop();
     }
 
+    /**
+     * Checks if stack is empty
+     */
     public isEmpty(): boolean {
         return this.elements.length === 0;
     }
 }
 
 /**
- * Reverse a string using by using the above ReverseStack class
+ * Reverses a given string using a stack
  */
-function reverse(str: string) {
-
+function reverseString(str: string) {
+    // -->Init: new stack to hold string characters
     let s = new ReverseStack<string>();
-
     let i = 0;
     let reversedStr = '';
 
@@ -41,10 +50,10 @@ function reverse(str: string) {
     }
 
     while (!s.isEmpty()) {
-        reversedStr += s.pop(); // -->Pop: Character from stack and append to reversedStr
+        reversedStr += s.pop();
     }
 
     return reversedStr;
 }
 
-console.log(reverse("Amir"));
+console.log(reverseString("amir"));

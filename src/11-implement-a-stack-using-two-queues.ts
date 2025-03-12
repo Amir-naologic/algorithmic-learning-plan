@@ -2,41 +2,44 @@
  *  Below code implements a stack using two queues.
  */
 class StackWithTwoQueue<T> {
-
-    // -->Declare: Two queues to simulate a stack
+    /**
+     * Declaring two queues to simulate a stack
+     */
     private queue1: T[];
     private queue2: T[];
 
     constructor() {
-
-        // -->Initialize: both queues are empty initially
         this.queue1 = [];
         this.queue2 = [];
     }
 
-    // -->Check: if the stack is empty
+    /**
+     * Check if queue is empty
+     */
     public isEmpty(): boolean {
         return this.queue1.length === 0;
     }
 
-    // -->Get: total number of elements in queue1
+    /**
+     *  Returns the number of elements in the first queue
+     */
     public size(): number {
         return this.queue1.length;
     }
 
-    // -->Add: element to the stack
+    /**
+     * Adds queue element
+     */
     public push(value: T): void {
         this.queue1.push(value);
     }
 
     /**
-     *  Below code implements a stack using two queues.
+     * Removes item from queue
      */
     public pop(): T | undefined {
-
-        // -->Check: if queues are empty
         if (this.isEmpty()) {
-            throw new Error("Both Queues are empty");
+            return undefined;
         }
 
         // -->Transfer: all elements except the last one from queue1 to queue2
@@ -52,11 +55,12 @@ class StackWithTwoQueue<T> {
         return shiftedElement;
     }
 
-    // -->Peek: get the top element from the stack
+    /**
+     * Gets top element
+     */
     public peek(): T | undefined {
-        // -->Check: if both queues are empty, throw an error
         if (this.isEmpty()) {
-            throw new Error("Both Queues are empty");
+            return undefined;
         }
 
         // -->Transfer: all elements except the last one from queue1 to queue2
@@ -69,7 +73,7 @@ class StackWithTwoQueue<T> {
         // -->Transfer: the last element from queue1 to queue2 (keeping it in queue1 temporarily)
         this.queue2.push(<T>this.queue1.shift());
 
-        // -->Swap: queue1 and queue2 to restore the state of the stack
+        // -->Swap: queues
         [this.queue1, this.queue2] = [this.queue2, this.queue1];
 
         return topElement;

@@ -1,28 +1,44 @@
 /**
- * Circular Queue implementation using a fixed-size array
+ * Circular Queue implementation
  */
 class CircularQueue<T> {
-
+    /**
+     * Array to store the queue elements
+     */
     private queue: T[];
+    /**
+     * Points to the front element of the queue
+     */
     private front: number;
+    /**
+     * Points to the last element of the queue
+     */
     private rear: number;
-    private capacity: number; // -->Maximum: size of the queue
-    private currentSize: number; // -->Current: number of elements in the queue
+    /**
+     * Maximum capacity for the queue
+     */
+    private capacity: number;
+    /**
+     * Tracks the current number of elements in this queue
+     */
+    private currentSize: number;
 
 
     constructor(capacity: number) {
 
         this.capacity = capacity;
 
-        //-->Initialize new queue of type generic T and of the size that's given
+        //-->Init: new queue
         this.queue = new Array<T>(capacity);
-        this.front = -1; // --> Initially set front to -1 indicating the queue is empty
-        this.rear = -1;  // --> Initially set rear to -1 indicating the queue is empty
+        this.front = -1;
+        this.rear = -1;
         this.currentSize = 0;
     }
 
+    /**
+     * Adds an element to the rear of the queue
+     */
     public enqueue(item: T): void {
-
         if (this.isFull()) {
             throw new Error("Queue is full cannot add")
         }
@@ -31,27 +47,27 @@ class CircularQueue<T> {
             this.front = 0;
         }
 
-        // -->Circularly: update the rear index
+        // -->Circularly: update the rear index to the next position
         this.rear = (this.rear + 1) % this.capacity;
-        this.queue[this.rear] = item; // -->Place: item at the rear position
+
+        this.queue[this.rear] = item;
         this.currentSize++;
     }
 
     /**
      * Removes an element from the front of the queue
      */
-    public dequeue(): T | null {
-
+    public dequeue(): T | undefined {
         if (this.isEmpty()) {
-            throw new Error("Queue is Empty")
+            return undefined;
         }
 
-        const item = this.queue[this.front]; // --> Get the element at the front
+        // -->Get: the item at the front of the queue
+        const item = this.queue[this.front];
 
-        // -->Circularly: update the front index
+        // -->Circularly: update the front index to the next position
         this.front = (this.front + 1) % this.capacity;
         this.currentSize--;
-
 
         return item;
     }
@@ -59,26 +75,28 @@ class CircularQueue<T> {
     /**
      * Get top element
      */
-    public peek(): T | null {
-
-        if (this.isEmpty()) {
-            throw new Error("Queue is empty")
-        }
-
-        return this.queue[this.front]; // --> Return the element at the front of the queue
+    public peek(): T | undefined {
+        return this.isEmpty() ? undefined : this.queue[this.front];
     }
 
+    /**
+     * Checks if the queue is empty
+     */
     public isEmpty(): boolean {
         return this.currentSize === 0;
     }
 
+    /**
+     * Checks if the queue is full
+     */
     public isFull(): boolean {
         return this.currentSize === this.capacity;
     }
 
     /**
-     * Get current size of the stack
-     */    public size(): number {
+     * Gets the current size of the queue
+     */
+    public size(): number {
         return this.currentSize;
     }
 }
@@ -94,5 +112,6 @@ console.log(circularQueue.dequeue());
 console.log(circularQueue.dequeue());
 console.log(circularQueue.dequeue());
 console.log(circularQueue.isFull());
+console.log(circularQueue.size());
 circularQueue.enqueue(3);
 console.log(circularQueue.peek());

@@ -2,48 +2,54 @@
  *  Queue with two stacks example.
  */
 class QueueWithTwoStack<T> {
-
-    // -->Declare: Two stacks to simulate a queue
+    /**
+     * Declare Two stacks to simulate a queue
+     */
     stack1: T[];
     stack2: T[];
 
     constructor() {
-
         this.stack1 = [];
         this.stack2 = [];
     }
 
+    /**
+     * Check if both stack are empty
+     */
     public isEmpty(): boolean {
         return this.stack1.length === 0 && this.stack2.length === 0;
     }
 
-    // -->Get: total number of elements in both stacks
+    /**
+     *  Returns the number of elements from the two stacks
+     */
     public size(): number {
         return this.stack1.length + this.stack2.length;
     }
 
+    /**
+     * Adds an item to the stack
+     */
     public enqueue(item: T): void {
         this.stack1.push(item);
     }
 
     /**
-     *  Reverse: elements from stack1 to stack2.
+     *  Reverses elements from stack1 to stack2.
      */
     private reverseStack(): void {
         while (this.stack1.length !== 0) {
-
             // -->Set: elements from stack1 to stack2
             this.stack2.push(<T>this.stack1.pop());
         }
     }
 
     /**
-     *  Remove: element from the front of the queue.
+     *  Removes element from the front of the queue.
      */
     public dequeue(): T | undefined {
-
         if (this.isEmpty()) {
-            throw new Error("Both stacks are empty");
+            return undefined;
         }
 
         this.reverseStack();
@@ -52,12 +58,11 @@ class QueueWithTwoStack<T> {
     }
 
     /**
-     *  Get: first element from the queue.
+     * Gets top element
      */
     public peek(): T | undefined {
-
         if (this.isEmpty()) {
-            throw new Error("Both stacks are empty");
+            return undefined;
         }
 
         this.reverseStack();

@@ -1,9 +1,15 @@
 /**
- * Stack implementation using a singly linked list example
+ * Stack implementation using a singly linked list
  */
 class StackNode<T> {
-    data: T;
-    next: StackNode<T> | null;
+    /**
+     * Stores the value of the node
+     */
+    public data: T;
+    /**
+     * Reference to the next node in the stack
+     */
+    public next: StackNode<T> | null;
 
     constructor(new_data: T) {
         this.data = new_data;
@@ -12,19 +18,27 @@ class StackNode<T> {
 }
 
 class LinkedListStack<T> {
+    /**
+     * Reference to the top node of the stack
+     */
     public head: StackNode<T> | null;
+
+    /**
+     * Keeps track of the number of elements in the stack
+     */
     private counter: number;
 
     constructor() {
-
-        // -->Initialize: head as null (empty stack)
+        // -->Init: head as null (empty stack)
         this.head = null;
 
-        // -->Initialize: counter to track size
+        // -->Init: counter to track size
         this.counter = 0;
     }
 
-    // -->Check: if stack is empty
+    /**
+     * Check if stack is empty
+     */
     public isEmpty(): boolean {
         return this.head === null;
     }
@@ -33,8 +47,7 @@ class LinkedListStack<T> {
      * Adds new element to the stack by creating a new node
      */
     public push(new_data: T): void {
-
-        // -->Create: a new node with the given data
+        // -->Create: new node
         const new_node = new StackNode<T>(new_data);
 
         // -->Link: new node to current head
@@ -44,10 +57,11 @@ class LinkedListStack<T> {
         this.head = new_node;
     }
 
+    /**
+     * Remove item from stack
+     */
     public pop(): T | undefined {
-
         if (this.isEmpty()) {
-            console.log("Stack is empty 😢");
             return undefined;
         }
 
@@ -65,18 +79,12 @@ class LinkedListStack<T> {
      * Get top element
      */
     public peek(): T | undefined {
-
         // -->Check: if stack is empty before accessing data
-        if (!this.isEmpty()) {
-            return this.head?.data;
-        } else {
-            console.log("Stack is empty");
-            return undefined;
-        }
+        return this.isEmpty() ? undefined : this.head?.data;
     }
 
     /**
-     * Get current size of the stack
+     * Get size of the stack
      */
     public size(): number {
         return this.counter;
