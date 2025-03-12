@@ -45,7 +45,7 @@ class Graph {
 
         //-->Initialize: an object to keep track of visited nodes.
         const visited: { [key: number]: boolean } = {};
-        console.log("Adjacency List: ", this.adjacentList); // Log adjacency list
+        console.log("Adjacency List: ", this.adjacentList);
 
         //-->Call: recursive DFS method starting from the start node.
         this.dfsRecursive(start, visited);
