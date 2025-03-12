@@ -1,21 +1,21 @@
 /**
- * Below code Evaluates a Postfix Expression Using a Stack.
+ * Postfix expression using a stack implementation
  */
-
-
 function evaluatePostFix(expression: string): number {
-    // -->Initialize: A stack to hold operands for evaluation
+
     const stack: number[] = [];
 
-    // -->Split the expression into tokens based on spaces
     const tokens = expression.split(' ');
 
     // -->Iterate: Loop through each token in the postfix expression
     for (let token of tokens) {
+
         // -->Check: If the token is a number, push it onto the stack
         if (!isNaN(Number(token))) {
             stack.push(Number(token));
+
         } else {
+
             // -->Check: If the token is an operator, pop two operands from the stack
             const operator1 = stack.pop();
             const operator2 = stack.pop();
@@ -25,6 +25,7 @@ function evaluatePostFix(expression: string): number {
                 throw new Error('Invalid expression: not enough operands.');
             }
 
+            // -->Perform: the operation based on the operator and then push the results onto the stack
             switch (token) {
                 case '+':
                     stack.push(operator1 + operator2);
@@ -44,9 +45,10 @@ function evaluatePostFix(expression: string): number {
         }
     }
 
-    // -->Pop the final result from the stack
+    // -->Get: result from stack
     const result = stack.pop();
-    // -->Check: If no result is found, the expression is invalid
+
+    // -->Check: If expression is invalid
     if (result === undefined) {
         throw new Error('Invalid expression: result is undefined.');
     }

@@ -1,22 +1,17 @@
 /**
- * Below code implements a stack data structure using an array.
+ * Stack implementation using an array example
  */
-
-
 class Stack<T> {
     private readonly items: T[];
 
     constructor() {
-        // -->Initialize: stack
         this.items = [];
     }
 
-    // --> Add: element to the stack
     public push(item: T): void {
         this.items.push(item);
     }
 
-    // --> Remove: last element from the stack
     public pop(): T | undefined {
         return this.items.pop();
     }

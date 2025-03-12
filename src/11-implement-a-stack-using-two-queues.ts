@@ -1,13 +1,14 @@
 /**
  *  Below code implements a stack using two queues.
  */
-
 class StackWithTwoQueue<T> {
+
     // -->Declare: Two queues to simulate a stack
     private queue1: T[];
     private queue2: T[];
 
     constructor() {
+
         // -->Initialize: both queues are empty initially
         this.queue1 = [];
         this.queue2 = [];
@@ -28,9 +29,12 @@ class StackWithTwoQueue<T> {
         this.queue1.push(value);
     }
 
-    // -->Remove: element from the stack
+    /**
+     *  Below code implements a stack using two queues.
+     */
     public pop(): T | undefined {
-        // -->Check: if both queues are empty, throw an error
+
+        // -->Check: if queues are empty
         if (this.isEmpty()) {
             throw new Error("Both Queues are empty");
         }
@@ -42,7 +46,7 @@ class StackWithTwoQueue<T> {
 
         const shiftedElement = this.queue1.shift();
 
-        // -->Swap: queue1 and queue2 to restore the state of the stack
+        // -->Swap: queues
         [this.queue1, this.queue2] = [this.queue2, this.queue1];
 
         return shiftedElement;

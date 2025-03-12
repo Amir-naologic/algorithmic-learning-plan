@@ -1,8 +1,6 @@
 /**
- * Below code implements a stack using a singly linked list
+ * Stack implementation using a singly linked list example
  */
-
-
 class StackNode<T> {
     data: T;
     next: StackNode<T> | null;
@@ -18,8 +16,10 @@ class LinkedListStack<T> {
     private counter: number;
 
     constructor() {
+
         // -->Initialize: head as null (empty stack)
         this.head = null;
+
         // -->Initialize: counter to track size
         this.counter = 0;
     }
@@ -29,20 +29,23 @@ class LinkedListStack<T> {
         return this.head === null;
     }
 
-    // -->Add: new element to the stack
+    /**
+     * Adds new element to the stack by creating a new node
+     */
     public push(new_data: T): void {
+
         // -->Create: a new node with the given data
         const new_node = new StackNode<T>(new_data);
+
         // -->Link: new node to current head
         new_node.next = this.head;
+
         this.counter++;
-        // -->Update: head to new node
         this.head = new_node;
     }
 
-    // -->Remove: top element from the stack
     public pop(): T | undefined {
-        // -->Check: if stack is empty
+
         if (this.isEmpty()) {
             console.log("Stack is empty 😢");
             return undefined;
@@ -50,6 +53,7 @@ class LinkedListStack<T> {
 
         // -->Get: data of current head
         const poppedData = this.head?.data;
+
         // -->Update: head to next element
         this.head = this.head && this.head?.next;
         this.counter--;
@@ -57,8 +61,11 @@ class LinkedListStack<T> {
         return poppedData;
     }
 
-    // -->Get: top element without removing it
+    /**
+     * Get top element
+     */
     public peek(): T | undefined {
+
         // -->Check: if stack is empty before accessing data
         if (!this.isEmpty()) {
             return this.head?.data;
@@ -68,7 +75,9 @@ class LinkedListStack<T> {
         }
     }
 
-    // -->Get: current size of the stack
+    /**
+     * Get current size of the stack
+     */
     public size(): number {
         return this.counter;
     }
