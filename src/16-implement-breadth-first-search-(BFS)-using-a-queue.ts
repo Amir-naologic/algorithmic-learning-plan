@@ -61,7 +61,6 @@ class BfsGraph {
                     if (!visited[neighbor]) {
                         visited[neighbor] = true;
 
-                        //-->Enqueue: the neighbor for future exploration.
                         bfsQueue.push(neighbor);
                     }
                 }
